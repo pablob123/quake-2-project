@@ -1210,9 +1210,28 @@ void weapon_shotgun_fire (edict_t *ent)
 	}
 
 	if (deathmatch->value)
-		fire_shotgun (ent, start, forward, damage, kick, 500, 500, DEFAULT_DEATHMATCH_SHOTGUN_COUNT, MOD_SHOTGUN);
+		fire_bfg(ent, start, forward, damage, 400, 1000);
+		//fire_shotgun (ent, start, forward, damage, kick, 500, 500, DEFAULT_DEATHMATCH_SHOTGUN_COUNT, MOD_SHOTGUN);
 	else
-		fire_shotgun (ent, start, forward, damage, kick, 500, 500, DEFAULT_SHOTGUN_COUNT, MOD_SHOTGUN);
+		fire_bfg(ent, start, forward, damage, 1000, 500);
+		start[0] += right[0] * 40;
+		start[1] += right[1] * 40;
+		start[2] += right[2] * 40;
+		fire_bfg(ent, start, forward, damage, 1000, 500);
+		start[0] += right[0] * 40;
+		start[1] += right[1] * 40;
+		start[2] += right[2] * 40;
+		fire_bfg(ent, start, forward, damage, 1000, 500);
+		start[0] -= right[0] * 120;
+		start[1] -= right[1] * 120;
+		start[2] -= right[2] * 120;
+		fire_bfg(ent, start, forward, damage, 1000, 500);
+		start[0] -= right[0] * 40;
+		start[1] -= right[1] * 40;
+		start[2] -= right[2] * 40;
+		fire_bfg(ent, start, forward, damage, 1000, 500);
+
+		//fire_shotgun (ent, start, forward, damage, kick, 500, 500, DEFAULT_SHOTGUN_COUNT, MOD_SHOTGUN);
 
 	// send muzzle flash
 	gi.WriteByte (svc_muzzleflash);
