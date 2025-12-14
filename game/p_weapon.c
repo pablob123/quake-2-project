@@ -25,6 +25,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 static qboolean	is_quad;
 static byte		is_silenced;
+int				triplejump = 0;
+pmove_t			*pm;
 
 
 void weapon_grenade_fire (edict_t *ent, qboolean held);
@@ -516,8 +518,21 @@ void Weapon_Generic (edict_t *ent, int FRAME_ACTIVATE_LAST, int FRAME_FIRE_LAST,
 			{
 				if (ent->client->quad_framenum > level.framenum)
 					gi.sound(ent, CHAN_ITEM, gi.soundindex("items/damage3.wav"), 1, ATTN_NORM, 0);
-
-				fire (ent);
+				/*if (ent->client->pers.weapon->weapmodel == 5 && ent->client->thrust == 1) {
+					if (ent->velocity[2] < -500) {
+						ent->velocity[2] += ((ent->velocity[2]) / (-5));
+					}
+					else if (ent->velocity[2] < 0) {
+						ent->velocity[2] += 100;
+					}
+					else {
+						ent->velocity[2] += ((1000 - ent->velocity[2]) / 8);
+					}
+				}
+				else {
+				fire(ent);
+				}*/
+				fire(ent);
 				break;
 			}
 		}
@@ -858,8 +873,20 @@ void Weapon_Blaster_Fire (edict_t *ent)
 
 void Weapon_Blaster (edict_t *ent)
 {
+	//ent->client->jump_count = 0;
 	static int	pause_frames[]	= {19, 32, 0};
 	static int	fire_frames[]	= {5, 0};
+
+	//triple jump
+	//if (triplejump <= 2 && ent->cmd) {
+	//	triplejump += 1;
+		
+	//}
+	//else if (triplejump == 2) {
+	//	triplejump = 0;
+	//	ent->velocity[2] = 700;
+	//}
+
 
 	Weapon_Generic (ent, 4, 8, 52, 55, pause_frames, fire_frames, Weapon_Blaster_Fire);
 }
@@ -959,20 +986,22 @@ void Machinegun_Fire (edict_t *ent)
 	int			damage = 8;
 	int			kick = 2;
 	vec3_t		offset;
+	int timer; //= level.time + 7.0f;
 
 	if (!(ent->client->buttons & BUTTON_ATTACK))
 	{
+		//ent->velocity[2] *= 10;
 		ent->client->machinegun_shots = 0;
 		ent->client->ps.gunframe++;
 		return;
 	}
+	
+	//if (ent->client->ps.gunframe == 5)
+	//	ent->client->ps.gunframe = 4;
+	//else
+	//	ent->client->ps.gunframe = 5;
 
-	if (ent->client->ps.gunframe == 5)
-		ent->client->ps.gunframe = 4;
-	else
-		ent->client->ps.gunframe = 5;
-
-	if (ent->client->pers.inventory[ent->client->ammo_index] < 1)
+	/*if (ent->client->pers.inventory[ent->client->ammo_index] < 1)
 	{
 		ent->client->ps.gunframe = 6;
 		if (level.time >= ent->pain_debounce_time)
@@ -982,7 +1011,7 @@ void Machinegun_Fire (edict_t *ent)
 		}
 		NoAmmoWeaponChange (ent);
 		return;
-	}
+	}*/
 
 	if (is_quad)
 	{
@@ -990,57 +1019,77 @@ void Machinegun_Fire (edict_t *ent)
 		kick *= 4;
 	}
 
-	for (i=1 ; i<3 ; i++)
-	{
-		ent->client->kick_origin[i] = crandom() * 0.35;
-		ent->client->kick_angles[i] = crandom() * 0.7;
-	}
-	ent->client->kick_origin[0] = crandom() * 0.35;
-	ent->client->kick_angles[0] = ent->client->machinegun_shots * -1.5;
+	//for (i=1 ; i<3 ; i++)
+	//{
+	//	ent->client->kick_origin[i] = crandom() * 0.35;
+	//	ent->client->kick_angles[i] = crandom() * 0.7;
+	//}
+	//ent->client->kick_origin[0] = crandom() * 0.35;
+	//ent->client->kick_angles[0] = ent->client->machinegun_shots * -1.5;
 
 	// raise the gun as it is firing
-	if (!deathmatch->value)
-	{
-		ent->client->machinegun_shots++;
-		if (ent->client->machinegun_shots > 9)
-			ent->client->machinegun_shots = 9;
-	}
+	//if (!deathmatch->value)
+	//{
+	//	ent->client->machinegun_shots++;
+	//	if (ent->client->machinegun_shots > 9)
+	//		ent->client->machinegun_shots = 9;
+	//}
 
 	// get start / end positions
-	VectorAdd (ent->client->v_angle, ent->client->kick_angles, angles);
-	AngleVectors (angles, forward, right, NULL);
-	VectorSet(offset, 0, 8, ent->viewheight-8);
-	P_ProjectSource (ent->client, ent->s.origin, offset, forward, right, start);
-	fire_bullet (ent, start, forward, damage, kick, DEFAULT_BULLET_HSPREAD, DEFAULT_BULLET_VSPREAD, MOD_MACHINEGUN);
-
-	gi.WriteByte (svc_muzzleflash);
-	gi.WriteShort (ent-g_edicts);
-	gi.WriteByte (MZ_MACHINEGUN | is_silenced);
-	gi.multicast (ent->s.origin, MULTICAST_PVS);
-
-	PlayerNoise(ent, start, PNOISE_WEAPON);
-
-	if (! ( (int)dmflags->value & DF_INFINITE_AMMO ) )
-		ent->client->pers.inventory[ent->client->ammo_index]--;
-
-	ent->client->anim_priority = ANIM_ATTACK;
-	if (ent->client->ps.pmove.pm_flags & PMF_DUCKED)
-	{
-		ent->s.frame = FRAME_crattak1 - (int) (random()+0.25);
-		ent->client->anim_end = FRAME_crattak9;
+	//VectorAdd (ent->client->v_angle, ent->client->kick_angles, angles);
+	//AngleVectors (angles, forward, right, NULL);
+	//VectorSet(offset, 0, 8, ent->viewheight-8);
+	//P_ProjectSource (ent->client, ent->s.origin, offset, forward, right, start);
+	//fire_bullet (ent, start, forward, damage, kick, DEFAULT_BULLET_HSPREAD, DEFAULT_BULLET_VSPREAD, MOD_MACHINEGUN);
+	
+	//rocket nozzle
+	if (level.time <= timer) {
+		
+		ent->velocity[2] = 500;
+		timer = level.time + 7.0f;
 	}
-	else
-	{
-		ent->s.frame = FRAME_attack1 - (int) (random()+0.25);
-		ent->client->anim_end = FRAME_attack8;
-	}
+
+	//if (ent->client->thrust == 1) {
+	//	AngleVectors(ent->client->v_angle, forward, right, NULL);
+	//	VectorMA(ent->velocity, 600, forward, ent->velocity);
+	//}
+	//else if(ent->)
+	
+
+	//gi.WriteByte (svc_muzzleflash);
+	//gi.WriteShort (ent-g_edicts);
+	//gi.WriteByte (MZ_MACHINEGUN | is_silenced);
+	//gi.multicast (ent->s.origin, MULTICAST_PVS);
+
+	//PlayerNoise(ent, start, PNOISE_WEAPON);
+
+	//if (! ( (int)dmflags->value & DF_INFINITE_AMMO ) )
+	//	ent->client->pers.inventory[ent->client->ammo_index]--;
+
+	//ent->client->anim_priority = ANIM_ATTACK;
+	//if (ent->client->ps.pmove.pm_flags & PMF_DUCKED)
+	//{
+	//	ent->s.frame = FRAME_crattak1 - (int) (random()+0.25);
+	//	ent->client->anim_end = FRAME_crattak9;
+	//}
+	//else
+	//{
+	//	ent->s.frame = FRAME_attack1 - (int) (random()+0.25);
+	//	ent->client->anim_end = FRAME_attack8;
+	//}
 }
 
 void Weapon_Machinegun (edict_t *ent)
 {
+	vec3_t forward, right;
 	static int	pause_frames[]	= {23, 45, 0};
 	static int	fire_frames[]	= {4, 5, 0};
 
+	//jet nozzle
+	if (ent->client->thrust == 1) {
+		AngleVectors(ent->client->v_angle, forward, right, NULL);
+		VectorMA(ent->velocity, 600, forward, ent->velocity);
+	}
 	Weapon_Generic (ent, 3, 5, 45, 49, pause_frames, fire_frames, Machinegun_Fire);
 }
 
@@ -1164,12 +1213,27 @@ void Chaingun_Fire (edict_t *ent)
 }
 
 
-void Weapon_Chaingun (edict_t *ent)
+void Weapon_Chaingun(edict_t* ent)
 {
-	static int	pause_frames[]	= {38, 43, 51, 61, 0};
-	static int	fire_frames[]	= {5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 0};
+	//vec3_t forward, right;
+	static int	pause_frames[] = { 38, 43, 51, 61, 0 };
+	static int	fire_frames[] = { 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 0 };
 
-	Weapon_Generic (ent, 4, 31, 61, 64, pause_frames, fire_frames, Chaingun_Fire);
+	Weapon_Generic(ent, 4, 31, 61, 64, pause_frames, fire_frames, Chaingun_Fire);
+
+	// hover nozzle
+	if (ent->client->thrust == 1) {
+		ent->velocity[2] = 100;
+		/*if (ent->velocity[2] < -500) {
+			ent->velocity[2] += ((ent->velocity[2]) / (-5));
+		}
+		else if (ent->velocity[2] < 0) {
+			ent->velocity[2] += 100;
+		}
+		else {
+			ent->velocity[2] += ((1000 - ent->velocity[2]) / 8);
+		}*/
+	}
 }
 
 
@@ -1232,6 +1296,7 @@ void Weapon_Shotgun (edict_t *ent)
 	static int	pause_frames[]	= {22, 28, 34, 0};
 	static int	fire_frames[]	= {8, 9, 0};
 
+	ent->velocity[1] += 100;
 	Weapon_Generic (ent, 7, 18, 36, 39, pause_frames, fire_frames, weapon_shotgun_fire);
 }
 

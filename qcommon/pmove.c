@@ -811,6 +811,11 @@ void PM_CheckJump (void)
 		return;
 	}
 
+	//crouch jump
+	if (pm->cmd.sidemove > 30 && pm->cmd.upmove > 10) {
+		pml.velocity[2] = 700;
+	}
+
 	if (pm->groundentity == NULL)
 		return;		// in air, so no effect
 
@@ -1011,6 +1016,9 @@ void PM_CheckDuck (void)
 			if (!trace.allsolid)
 				pm->s.pm_flags &= ~PMF_DUCKED;
 		}
+	}
+	if (pm->s.pm_flags & PMF_DUCKED && pm->cmd.upmove < 10) {
+		pml.velocity[2] == 700;
 	}
 
 	if (pm->s.pm_flags & PMF_DUCKED)

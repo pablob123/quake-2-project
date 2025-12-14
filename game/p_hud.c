@@ -303,6 +303,7 @@ void HelpComputer (edict_t *ent)
 {
 	char	string[1024];
 	char	*sk;
+	//game.helpmessage1 = "This is a mario mod";
 
 	if (skill->value == 0)
 		sk = "easy";
@@ -324,8 +325,8 @@ void HelpComputer (edict_t *ent)
 		"xv 50 yv 172 string2 \"%3i/%3i     %i/%i       %i/%i\" ", 
 		sk,
 		level.level_name,
-		game.helpmessage1,
-		game.helpmessage2,
+		"This is a Super Mario mod.\n It adds in a variety of \n different mechanics from\n the Mario Games",//game.helpmessage1,
+		"For example, it adds in the \ndifferent abilities of the \nFLUDD, or different powerups. It\n also includes a 3rd person camera.",//game.helpmessage2,
 		level.killed_monsters, level.total_monsters, 
 		level.found_goals, level.total_goals,
 		level.found_secrets, level.total_secrets);

@@ -23,6 +23,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 void ClientUserinfoChanged (edict_t *ent, char *userinfo);
 
 void SP_misc_teleporter_dest (edict_t *ent);
+int		triple_jump = 0;
 
 //
 // Gross, ugly, disgustuing hack section
@@ -1740,6 +1741,13 @@ void ClientThink (edict_t *ent, usercmd_t *ucmd)
 		other = g_edicts + i;
 		if (other->inuse && other->client->chase_target == ent)
 			UpdateChaseCam(other);
+	}
+	if (triple_jump < 2 && pm.cmd.upmove >= 10) {
+		triple_jump++;
+	}
+	else if (triple_jump == 2 && pm.cmd.upmove >= 10) {
+		ent->velocity[2] = 500;
+		triple_jump = 0;
 	}
 }
 

@@ -276,7 +276,7 @@ void SV_CalcViewOffset (edict_t *ent)
 		angles[ROLL] += delta*run_roll->value;
 
 		// add angles based on bob
-
+		
 		delta = bobfracsin * bob_pitch->value * xyspeed;
 		if (ent->client->ps.pmove.pm_flags & PMF_DUCKED)
 			delta *= 6;		// crouching

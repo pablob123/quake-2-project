@@ -959,6 +959,10 @@ struct gclient_s
 
 	edict_t		*chase_target;		// player we are chasing
 	qboolean	update_chase;		// need to update chase info?
+	qboolean	thrust;
+	int			fludd_state;
+	int			rocket_timer;
+	int			jump_count;
 };
 
 
