@@ -3,8 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\pablo\\Documents\\quake-2-project\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{C50658D3-5399-49E0-B84E-296D8E01854F}|ctf\\ctf.vcxproj|C:\\Users\\pablo\\Documents\\quake-2-project\\ctf\\p_weapon.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C50658D3-5399-49E0-B84E-296D8E01854F}|ctf\\ctf.vcxproj|solutionrelative:ctf\\p_weapon.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{99BC3F01-A7EE-4881-939F-8A5EB75E1973}|game\\game.vcxproj|C:\\Users\\pablo\\Documents\\quake-2-project\\game\\p_weapon.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{99BC3F01-A7EE-4881-939F-8A5EB75E1973}|game\\game.vcxproj|solutionrelative:game\\p_weapon.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C50658D3-5399-49E0-B84E-296D8E01854F}|ctf\\ctf.vcxproj|C:\\Users\\pablo\\Documents\\quake-2-project\\ctf\\g_weapon.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C50658D3-5399-49E0-B84E-296D8E01854F}|ctf\\ctf.vcxproj|solutionrelative:ctf\\g_weapon.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{99BC3F01-A7EE-4881-939F-8A5EB75E1973}|game\\game.vcxproj|C:\\Users\\pablo\\Documents\\quake-2-project\\game\\p_client.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -25,10 +33,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{99BC3F01-A7EE-4881-939F-8A5EB75E1973}|game\\game.vcxproj|C:\\Users\\pablo\\Documents\\quake-2-project\\game\\p_view.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{99BC3F01-A7EE-4881-939F-8A5EB75E1973}|game\\game.vcxproj|solutionrelative:game\\p_view.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C50658D3-5399-49E0-B84E-296D8E01854F}|ctf\\ctf.vcxproj|C:\\Users\\pablo\\Documents\\quake-2-project\\ctf\\g_weapon.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{C50658D3-5399-49E0-B84E-296D8E01854F}|ctf\\ctf.vcxproj|solutionrelative:ctf\\g_weapon.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C50658D3-5399-49E0-B84E-296D8E01854F}|ctf\\ctf.vcxproj|C:\\Users\\pablo\\Documents\\quake-2-project\\ctf\\p_client.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -74,11 +78,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "pmove.c",
               "DocumentMoniker": "C:\\Users\\pablo\\Documents\\quake-2-project\\qcommon\\pmove.c",
               "RelativeDocumentMoniker": "qcommon\\pmove.c",
@@ -87,12 +91,11 @@
               "ViewState": "AgIAAOMDAAAAAAAAAAApwPUDAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2025-12-14T00:02:52.202Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "g_items.c",
               "DocumentMoniker": "C:\\Users\\pablo\\Documents\\quake-2-project\\ctf\\g_items.c",
               "RelativeDocumentMoniker": "ctf\\g_items.c",
@@ -100,12 +103,11 @@
               "RelativeToolTip": "ctf\\g_items.c",
               "ViewState": "AgIAAEQFAAAAAAAAAAAqwFUFAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2025-12-18T04:30:57.934Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-18T04:30:57.934Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "g_spawn.c",
               "DocumentMoniker": "C:\\Users\\pablo\\Documents\\quake-2-project\\game\\g_spawn.c",
               "RelativeDocumentMoniker": "game\\g_spawn.c",
@@ -113,12 +115,11 @@
               "RelativeToolTip": "game\\g_spawn.c",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2025-12-18T04:31:47.363Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-18T04:31:47.363Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "g_items.c",
               "DocumentMoniker": "C:\\Users\\pablo\\Documents\\quake-2-project\\game\\g_items.c",
               "RelativeDocumentMoniker": "game\\g_items.c",
@@ -126,12 +127,11 @@
               "RelativeToolTip": "game\\g_items.c",
               "ViewState": "AgIAAE0FAAAAAAAAAAAAAGUFAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2025-12-18T04:17:49.024Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-18T04:17:49.024Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "menu.c",
               "DocumentMoniker": "C:\\Users\\pablo\\Documents\\quake-2-project\\client\\menu.c",
               "RelativeDocumentMoniker": "client\\menu.c",
@@ -139,12 +139,11 @@
               "RelativeToolTip": "client\\menu.c",
               "ViewState": "AgIAAG0CAAAAAAAAAAASwIYCAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2025-12-18T03:55:47.494Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-18T03:55:47.494Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "p_hud.c",
               "DocumentMoniker": "C:\\Users\\pablo\\Documents\\quake-2-project\\game\\p_hud.c",
               "RelativeDocumentMoniker": "game\\p_hud.c",
@@ -152,12 +151,11 @@
               "RelativeToolTip": "game\\p_hud.c",
               "ViewState": "AgIAAIABAAAAAAAAAAAqwJMBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2025-12-14T02:00:12.767Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-14T02:00:12.767Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "p_menu.c",
               "DocumentMoniker": "C:\\Users\\pablo\\Documents\\quake-2-project\\ctf\\p_menu.c",
               "RelativeDocumentMoniker": "ctf\\p_menu.c",
@@ -165,25 +163,37 @@
               "RelativeToolTip": "ctf\\p_menu.c",
               "ViewState": "AgIAABoAAAAAAAAAAAAAABoAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2025-12-18T00:40:27.824Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-18T00:40:27.824Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "p_weapon.c",
               "DocumentMoniker": "C:\\Users\\pablo\\Documents\\quake-2-project\\game\\p_weapon.c",
               "RelativeDocumentMoniker": "game\\p_weapon.c",
               "ToolTip": "C:\\Users\\pablo\\Documents\\quake-2-project\\game\\p_weapon.c",
               "RelativeToolTip": "game\\p_weapon.c",
-              "ViewState": "AgIAANsAAAAAAAAAAAASwPMAAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAAEADAAAAAAAAAAASwE0DAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2025-11-05T23:04:39.938Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 0,
+              "Title": "p_weapon.c",
+              "DocumentMoniker": "C:\\Users\\pablo\\Documents\\quake-2-project\\ctf\\p_weapon.c",
+              "RelativeDocumentMoniker": "ctf\\p_weapon.c",
+              "ToolTip": "C:\\Users\\pablo\\Documents\\quake-2-project\\ctf\\p_weapon.c",
+              "RelativeToolTip": "ctf\\p_weapon.c",
+              "ViewState": "AgIAAE8DAAAAAAAAAAASwE0DAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2025-12-18T23:56:32.196Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "p_client.c",
               "DocumentMoniker": "C:\\Users\\pablo\\Documents\\quake-2-project\\ctf\\p_client.c",
               "RelativeDocumentMoniker": "ctf\\p_client.c",
@@ -191,90 +201,24 @@
               "RelativeToolTip": "ctf\\p_client.c",
               "ViewState": "AgIAAJIFAAAAAAAAAAAAAKIFAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2025-12-17T05:49:33.68Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-17T05:49:33.68Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 2,
               "Title": "g_weapon.c",
               "DocumentMoniker": "C:\\Users\\pablo\\Documents\\quake-2-project\\ctf\\g_weapon.c",
               "RelativeDocumentMoniker": "ctf\\g_weapon.c",
               "ToolTip": "C:\\Users\\pablo\\Documents\\quake-2-project\\ctf\\g_weapon.c",
               "RelativeToolTip": "ctf\\g_weapon.c",
-              "ViewState": "AgIAAIQBAAAAAAAAAAAAAIsBAABaAAAAAAAAAA==",
+              "ViewState": "AgIAAHgBAAAAAAAAAAASwFgBAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2025-12-17T03:25:03.927Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "p_client.c",
-              "DocumentMoniker": "C:\\Users\\pablo\\Documents\\quake-2-project\\game\\p_client.c",
-              "RelativeDocumentMoniker": "game\\p_client.c",
-              "ToolTip": "C:\\Users\\pablo\\Documents\\quake-2-project\\game\\p_client.c",
-              "RelativeToolTip": "game\\p_client.c",
-              "ViewState": "AgIAAMUAAAAAAAAAAAASwNUAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2025-12-14T01:35:46.464Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "g_cmds.c",
-              "DocumentMoniker": "C:\\Users\\pablo\\Documents\\quake-2-project\\game\\g_cmds.c",
-              "RelativeDocumentMoniker": "game\\g_cmds.c",
-              "ToolTip": "C:\\Users\\pablo\\Documents\\quake-2-project\\game\\g_cmds.c",
-              "RelativeToolTip": "game\\g_cmds.c",
-              "ViewState": "AgIAAIkCAAAAAAAAAAAqwJoCAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2025-12-13T01:08:00.226Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "m_actor.c",
-              "DocumentMoniker": "C:\\Users\\pablo\\Documents\\quake-2-project\\game\\m_actor.c",
-              "RelativeDocumentMoniker": "game\\m_actor.c",
-              "ToolTip": "C:\\Users\\pablo\\Documents\\quake-2-project\\game\\m_actor.c",
-              "RelativeToolTip": "game\\m_actor.c",
-              "ViewState": "AgIAALYBAAAAAAAAAAAawMABAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2025-12-12T23:37:28.889Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "g_local.h",
-              "DocumentMoniker": "C:\\Users\\pablo\\Documents\\quake-2-project\\game\\g_local.h",
-              "RelativeDocumentMoniker": "game\\g_local.h",
-              "ToolTip": "C:\\Users\\pablo\\Documents\\quake-2-project\\game\\g_local.h",
-              "RelativeToolTip": "game\\g_local.h",
-              "ViewState": "AgIAAOIAAAAAAAAAAAASwPoAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-12-13T01:05:00.831Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "p_view.c",
-              "DocumentMoniker": "C:\\Users\\pablo\\Documents\\quake-2-project\\game\\p_view.c",
-              "RelativeDocumentMoniker": "game\\p_view.c",
-              "ToolTip": "C:\\Users\\pablo\\Documents\\quake-2-project\\game\\p_view.c",
-              "RelativeToolTip": "game\\p_view.c",
-              "ViewState": "AgIAABEEAAAAAAAAAAAqwCgEAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2025-12-13T23:03:03.689Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "g_monster.c",
               "DocumentMoniker": "C:\\Users\\pablo\\Documents\\quake-2-project\\game\\g_monster.c",
               "RelativeDocumentMoniker": "game\\g_monster.c",
@@ -282,8 +226,67 @@
               "RelativeToolTip": "game\\g_monster.c",
               "ViewState": "AgIAAOUCAAAAAAAAAAAiwPcCAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2025-12-17T05:39:55.151Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-17T05:39:55.151Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "p_client.c",
+              "DocumentMoniker": "C:\\Users\\pablo\\Documents\\quake-2-project\\game\\p_client.c",
+              "RelativeDocumentMoniker": "game\\p_client.c",
+              "ToolTip": "C:\\Users\\pablo\\Documents\\quake-2-project\\game\\p_client.c",
+              "RelativeToolTip": "game\\p_client.c",
+              "ViewState": "AgIAAMUAAAAAAAAAAAASwNUAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2025-12-14T01:35:46.464Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "g_cmds.c",
+              "DocumentMoniker": "C:\\Users\\pablo\\Documents\\quake-2-project\\game\\g_cmds.c",
+              "RelativeDocumentMoniker": "game\\g_cmds.c",
+              "ToolTip": "C:\\Users\\pablo\\Documents\\quake-2-project\\game\\g_cmds.c",
+              "RelativeToolTip": "game\\g_cmds.c",
+              "ViewState": "AgIAAIkCAAAAAAAAAAAqwJoCAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2025-12-13T01:08:00.226Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "m_actor.c",
+              "DocumentMoniker": "C:\\Users\\pablo\\Documents\\quake-2-project\\game\\m_actor.c",
+              "RelativeDocumentMoniker": "game\\m_actor.c",
+              "ToolTip": "C:\\Users\\pablo\\Documents\\quake-2-project\\game\\m_actor.c",
+              "RelativeToolTip": "game\\m_actor.c",
+              "ViewState": "AgIAALYBAAAAAAAAAAAawMABAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2025-12-12T23:37:28.889Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "g_local.h",
+              "DocumentMoniker": "C:\\Users\\pablo\\Documents\\quake-2-project\\game\\g_local.h",
+              "RelativeDocumentMoniker": "game\\g_local.h",
+              "ToolTip": "C:\\Users\\pablo\\Documents\\quake-2-project\\game\\g_local.h",
+              "RelativeToolTip": "game\\g_local.h",
+              "ViewState": "AgIAAOIAAAAAAAAAAAASwPoAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-12-13T01:05:00.831Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "p_view.c",
+              "DocumentMoniker": "C:\\Users\\pablo\\Documents\\quake-2-project\\game\\p_view.c",
+              "RelativeDocumentMoniker": "game\\p_view.c",
+              "ToolTip": "C:\\Users\\pablo\\Documents\\quake-2-project\\game\\p_view.c",
+              "RelativeToolTip": "game\\p_view.c",
+              "ViewState": "AgIAABEEAAAAAAAAAAAqwCgEAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2025-12-13T23:03:03.689Z"
             }
           ]
         }
