@@ -738,3 +738,30 @@ void swimmonster_start (edict_t *self)
 	self->think = swimmonster_start_go;
 	monster_start (self);
 }
+
+void spawn_player(edict_t* ent) {
+	edict_t *self;
+	vec3_t forward;
+	self = G_Spawn();
+
+	AngleVectors(ent->client->v_angle, forward, NULL, NULL);
+	VectorMA(ent->s.origin, 100, forward, self->s.origin);
+
+	ent->playermodel = self;
+	self->creator = ent;
+
+	
+	self->model = "players/male/tris.md2";
+	self->s.skinnum = ent->s.skinnum;
+	self->s.modelindex = ent->s.modelindex;
+	self->s.modelindex2 = ent->s.modelindex;
+	
+	self->s.angles[PITCH] = 0;//ent->s.angles[PITCH];
+	self->s.angles[YAW] = ent->s.angles[YAW];
+	self->s.angles[ROLL] = ent->s.angles[ROLL];
+
+	
+
+	gi.linkentity(self);
+
+}

@@ -158,7 +158,7 @@ qboolean Pickup_Weapon (edict_t *ent, edict_t *other)
 
 	if (other->client->pers.weapon != ent->item && 
 		(other->client->pers.inventory[index] == 1) &&
-		( !deathmatch->value || other->client->pers.weapon == FindItem("blaster") ) )
+		( !deathmatch->value || other->client->pers.weapon == FindItem("melee") ) )
 		other->client->newweapon = ent->item;
 
 	return true;
@@ -271,7 +271,7 @@ void NoAmmoWeaponChange (edict_t *ent)
 		ent->client->newweapon = FindItem ("shotgun");
 		return;
 	}
-	ent->client->newweapon = FindItem ("blaster");
+	ent->client->newweapon = FindItem ("melee");
 }
 
 /*
@@ -732,8 +732,13 @@ void weapon_grenadelauncher_fire (edict_t *ent)
 	radius = damage+40;
 	if (is_quad)
 		damage *= 4;
-
-	VectorSet(offset, 8, 8, ent->viewheight-8);
+	if (ent->playermodel) {
+		VectorSet(offset, 8, 100, (ent->viewheight - 8));
+	}
+	else if (!ent->playermodel) {
+		VectorSet(offset, 8, 8, ent->viewheight - 8);
+	}
+	//VectorSet(offset, 8, 8, ent->viewheight-8);
 	AngleVectors (ent->client->v_angle, forward, right, NULL);
 	P_ProjectSource (ent->client, ent->s.origin, offset, forward, right, start);
 
@@ -837,17 +842,22 @@ void Blaster_Fire (edict_t *ent, vec3_t g_offset, int damage, qboolean hyper, in
 	if (is_quad)
 		damage *= 4;
 	AngleVectors (ent->client->v_angle, forward, right, NULL);
-	VectorSet(offset, 24, 8, ent->viewheight-8);
+	if (ent->playermodel) {
+		VectorSet(offset, 24, 8, ent->viewheight - 8);
+	}
+	else if (ent->playermodel) {
+		VectorSet(offset, 24, 8, ent->viewheight - 8);
+	}
+	
 	VectorAdd (offset, g_offset, offset);
 	P_ProjectSource (ent->client, ent->s.origin, offset, forward, right, start);
 
 	VectorScale (forward, -2, ent->client->kick_origin);
 	ent->client->kick_angles[0] = -1;
-
-	fire_blaster (ent, start, forward, damage, 1000, effect, hyper);
+	fire_blaster (ent, start, forward, damage, 0, effect, hyper);
 
 	// send muzzle flash
-	gi.WriteByte (svc_muzzleflash);
+	/*gi.WriteByte(svc_muzzleflash);
 	gi.WriteShort (ent-g_edicts);
 	if (hyper)
 		gi.WriteByte (MZ_HYPERBLASTER | is_silenced);
@@ -855,9 +865,8 @@ void Blaster_Fire (edict_t *ent, vec3_t g_offset, int damage, qboolean hyper, in
 		gi.WriteByte (MZ_BLASTER | is_silenced);
 	gi.multicast (ent->s.origin, MULTICAST_PVS);
 
-	PlayerNoise(ent, start, PNOISE_WEAPON);
+	PlayerNoise(ent, start, PNOISE_WEAPON);*/
 }
-
 
 void Weapon_Blaster_Fire (edict_t *ent)
 {
@@ -1111,7 +1120,7 @@ void Chaingun_Fire (edict_t *ent)
 
 	if (ent->client->ps.gunframe == 5)
 		gi.sound(ent, CHAN_AUTO, gi.soundindex("weapons/chngnu1a.wav"), 1, ATTN_IDLE, 0);
-
+	
 	if ((ent->client->ps.gunframe == 14) && !(ent->client->buttons & BUTTON_ATTACK))
 	{
 		ent->client->ps.gunframe = 32;
@@ -1197,7 +1206,7 @@ void Chaingun_Fire (edict_t *ent)
 		VectorSet(offset, 0, r, u + ent->viewheight-8);
 		P_ProjectSource (ent->client, ent->s.origin, offset, forward, right, start);
 
-		fire_bullet (ent, start, forward, damage, kick, DEFAULT_BULLET_HSPREAD, DEFAULT_BULLET_VSPREAD, MOD_CHAINGUN);
+		//fire_bullet (ent, start, forward, damage, kick, DEFAULT_BULLET_HSPREAD, DEFAULT_BULLET_VSPREAD, MOD_CHAINGUN);
 	}
 
 	// send muzzle flash

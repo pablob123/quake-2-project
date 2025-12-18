@@ -342,45 +342,60 @@ void blaster_touch (edict_t *self, edict_t *other, cplane_t *plane, csurface_t *
 	G_FreeEdict (self);
 }
 
-void fire_blaster (edict_t *self, vec3_t start, vec3_t dir, int damage, int speed, int effect, qboolean hyper)
+void fire_blaster (edict_t *self, vec3_t start, vec3_t aimdir, int damage, int speed, int effect, qboolean hyper)
 {
 	edict_t	*bolt;
 	trace_t	tr;
+	vec3_t dir;
+	vec3_t up, right, forward;
+	vec3_t end;
 
-	VectorNormalize (dir);
+	//VectorNormalize (dir);
 
-	bolt = G_Spawn();
-	bolt->svflags = SVF_PROJECTILE; // special net code is used for projectiles
-	VectorCopy (start, bolt->s.origin);
-	VectorCopy (start, bolt->s.old_origin);
-	vectoangles (dir, bolt->s.angles);
-	VectorScale (dir, speed, bolt->velocity);
-	bolt->movetype = MOVETYPE_FLYMISSILE;
-	bolt->clipmask = MASK_SHOT;
-	bolt->solid = SOLID_BBOX;
-	bolt->s.effects |= effect;
-	VectorClear (bolt->mins);
-	VectorClear (bolt->maxs);
-	bolt->s.modelindex = gi.modelindex ("models/objects/laser/tris.md2");
-	bolt->s.sound = gi.soundindex ("misc/lasfly.wav");
-	bolt->owner = self;
-	bolt->touch = blaster_touch;
-	bolt->nextthink = level.time + 2;
-	bolt->think = G_FreeEdict;
-	bolt->dmg = damage;
-	bolt->classname = "bolt";
-	if (hyper)
-		bolt->spawnflags = 1;
-	gi.linkentity (bolt);
+	//bolt = G_Spawn();
+	//bolt->svflags = SVF_PROJECTILE; // special net code is used for projectiles
+	//VectorCopy (start, bolt->s.origin);
+	//VectorCopy (start, bolt->s.old_origin);
+	//vectoangles (dir, bolt->s.angles);
+	//VectorScale (dir, speed, bolt->velocity);
+	//bolt->movetype = MOVETYPE_FLYMISSILE;
+	//bolt->clipmask = MASK_SHOT;
+	//bolt->solid = SOLID_BBOX;
+	//bolt->s.effects |= effect;
+	//VectorClear (bolt->mins);
+	//VectorClear (bolt->maxs);
+	//bolt->s.modelindex = gi.modelindex ("models/objects/laser/tris.md2");
+	//bolt->s.sound = gi.soundindex ("misc/lasfly.wav");
+	//bolt->owner = self;
+	//bolt->touch = blaster_touch;
+	//bolt->nextthink = level.time + 2;
+	//bolt->think = G_FreeEdict;
+	//bolt->dmg = damage;
+	//bolt->classname = "bolt";
+	//if (hyper)
+	//	bolt->spawnflags = 1;
+	//gi.linkentity (bolt);
 
-	if (self->client)
-		check_dodge (self, bolt->s.origin, dir, speed);
+	//if (self->client)
+	//	check_dodge (self, bolt->s.origin, dir, speed);
 
-	tr = gi.trace (self->s.origin, NULL, NULL, bolt->s.origin, bolt, MASK_SHOT);
-	if (tr.fraction < 1.0)
+	tr = gi.trace (self->s.origin, NULL, NULL, start/*bolt->s.origin*/ , self, MASK_SHOT);
+	
+	if (!(tr.fraction < 1.0))
 	{
-		VectorMA (bolt->s.origin, -10, dir, bolt->s.origin);
-		bolt->touch (bolt, tr.ent, NULL, NULL);
+		vectoangles(aimdir, dir);
+		AngleVectors(dir, forward, right, up);
+		VectorMA(start, 8192, forward, end);
+		//VectorMA (bolt->s.origin, -10, dir, bolt->s.origin);
+		//bolt->touch (bolt, tr.ent, NULL, NULL);
+	}
+
+	if (!((tr.surface) && (tr.surface->flags & SURF_SKY))) {
+		if (tr.fraction < 1.0) {
+			if (tr.ent->takedamage) {
+				T_Damage(tr.ent, self, self, aimdir, tr.endpos, tr.plane.normal, damage, NULL, 0, NULL);
+			}
+		}
 	}
 }	
 

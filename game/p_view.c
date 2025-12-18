@@ -321,7 +321,7 @@ void SV_CalcViewOffset (edict_t *ent)
 	// absolutely bound offsets
 	// so the view can never be outside the player box
 
-	if (v[0] < -14)
+	/*if (v[0] < -14)
 		v[0] = -14;
 	else if (v[0] > 14)
 		v[0] = 14;
@@ -332,9 +332,12 @@ void SV_CalcViewOffset (edict_t *ent)
 	if (v[2] < -22)
 		v[2] = -22;
 	else if (v[2] > 30)
-		v[2] = 30;
+		v[2] = 30;*/
 
 	VectorCopy (v, ent->client->ps.viewoffset);
+
+	//ent->client->ps.viewoffset[2] = 100;
+	//ent->client->ps.viewoffset[0] -= 100;
 }
 
 /*
@@ -554,7 +557,7 @@ void P_FallingDamage (edict_t *ent)
 				ent->s.event = EV_FALL;
 		}
 		ent->pain_debounce_time = level.time;	// no normal pain sound
-		damage = (delta-30)/2;
+		damage = -1;//(delta-30)/2;
 		if (damage < 1)
 			damage = 1;
 		VectorSet (dir, 0, 0, 1);
@@ -1083,5 +1086,17 @@ void ClientEndServerFrame (edict_t *ent)
 		DeathmatchScoreboardMessage (ent, ent->enemy);
 		gi.unicast (ent, false);
 	}
+	if (ent->playermodel) {
+		//VectorCopy(ent->s.origin, ent->playermodel->s.origin);
+		//VectorCopy(ent->s.origin[2], ent->playermodel->s.origin[2]);
+		ent->playermodel->s.angles[PITCH] = 0;
+		ent->playermodel->s.angles[YAW] = ent->s.angles[YAW];
+		ent->playermodel->s.angles[ROLL] = ent->s.angles[ROLL];
+		AngleVectors(ent->client->v_angle, forward, NULL, NULL);
+		VectorMA(ent->s.origin, 100, forward, ent->playermodel->s.origin);
+		ent->playermodel->s.origin[2] = ent->s.origin[2];
+		ent->client->ps.gunindex = 0;
+	}
+	
 }
 

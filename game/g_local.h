@@ -273,6 +273,7 @@ typedef struct
 	char		helpmessage2[512];
 	int			helpchanged;	// flash F1 icon if non 0, play sound
 								// and increment only if 1, 2, or 3
+	int			modchanged;
 
 	gclient_t	*clients;		// [maxclients]
 
@@ -601,6 +602,7 @@ extern	gitem_t	itemlist[];
 //
 void Cmd_Help_f (edict_t *ent);
 void Cmd_Score_f (edict_t *ent);
+void Cmd_Modchanges_f(edict_t *ent);
 
 //
 // g_items.c
@@ -860,6 +862,8 @@ typedef struct
 
 	int			game_helpchanged;
 	int			helpchanged;
+	int			game_modchanged;
+	int			modchanged;
 
 	qboolean	spectator;			// client is a spectator
 } client_persistant_t;
@@ -892,6 +896,7 @@ struct gclient_s
 	qboolean	showinventory;		// set layout stat
 	qboolean	showhelp;
 	qboolean	showhelpicon;
+	qboolean	showmodchanges;
 
 	int			ammo_index;
 
@@ -1113,5 +1118,7 @@ struct edict_s
 	// common data blocks
 	moveinfo_t		moveinfo;
 	monsterinfo_t	monsterinfo;
+	edict_t			*playermodel;
+	edict_t			*creator;
 };
 

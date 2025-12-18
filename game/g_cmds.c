@@ -936,6 +936,29 @@ void Cmd_fluddstate_f(edict_t* ent) {
 	}
 }
 
+void SP_Player(edict_t *self) {
+	char *string;
+	int turnon;
+
+	string = gi.args();
+	if (Q_stricmp(string, "on") == 0)
+		turnon = true;
+	else if (Q_stricmp(string, "off") == 0)
+		turnon = false;
+
+	if ((turnon == true) && (self->playermodel)) return;
+	if ((turnon == false) && !(self->playermodel)) return;
+
+	if (self->playermodel) {
+		G_FreeEdict(self->playermodel);
+		self->playermodel = NULL;
+		self->client->ps.gunindex = gi.modelindex(self->client->pers.weapon->view_model);
+		return;
+	}
+	self->client->ps.gunindex = 0;
+	spawn_player(self);
+}
+
 /*
 =================
 ClientCommand
@@ -973,6 +996,10 @@ void ClientCommand (edict_t *ent)
 	if (Q_stricmp (cmd, "help") == 0)
 	{
 		Cmd_Help_f (ent);
+		return;
+	}
+	if (Q_stricmp(cmd, "weapons_changes") == 0) {
+		Cmd_Modchanges_f(ent);
 		return;
 	}
 
@@ -1025,6 +1052,8 @@ void ClientCommand (edict_t *ent)
 		Cmd_Thrust_f(ent);
 	else if (Q_stricmp(cmd, "fludd") == 0)
 		Cmd_fluddstate_f(ent);
+	else if (Q_stricmp(cmd, "3rdperson") == 0)
+		SP_Player(ent);
 	else if (Q_stricmp(cmd, "playerlist") == 0)
 		Cmd_PlayerList_f(ent);
 	else	// anything that doesn't match a command will be a chat

@@ -501,7 +501,7 @@ qboolean Pickup_Ammo (edict_t *ent, edict_t *other)
 
 	if (weapon && !oldcount)
 	{
-		if (other->client->pers.weapon != ent->item && ( !deathmatch->value || other->client->pers.weapon == FindItem("blaster") ) )
+		if (other->client->pers.weapon != ent->item && ( !deathmatch->value || other->client->pers.weapon == FindItem("melee") ) )
 			other->client->newweapon = ent->item;
 	}
 
@@ -1298,7 +1298,7 @@ always owned, never in the world
 		NULL, 0,
 		"models/weapons/v_blast/tris.md2",
 /* icon */		"w_blaster",
-/* pickup */	"Blaster",
+/* pickup */	"melee",
 		0,
 		0,
 		NULL,
@@ -1367,7 +1367,7 @@ always owned, never in the world
 		"models/weapons/g_machn/tris.md2", EF_ROTATE,
 		"models/weapons/v_machn/tris.md2",
 /* icon */		"w_machinegun",
-/* pickup */	"Machinegun",
+/* pickup */	"FLUDD1",//"Machinegun",
 		0,
 		1,
 		"Bullets",
@@ -1390,7 +1390,7 @@ always owned, never in the world
 		"models/weapons/g_chain/tris.md2", EF_ROTATE,
 		"models/weapons/v_chain/tris.md2",
 /* icon */		"w_chaingun",
-/* pickup */	"Chaingun",
+/* pickup */	"FLUDD2",//"Chaingun",
 		0,
 		1,
 		"Bullets",

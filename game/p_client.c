@@ -421,7 +421,7 @@ void TossClientWeapon (edict_t *self)
 	item = self->client->pers.weapon;
 	if (! self->client->pers.inventory[self->client->ammo_index] )
 		item = NULL;
-	if (item && (strcmp (item->pickup_name, "Blaster") == 0))
+	if (item && (strcmp (item->pickup_name, "melee") == 0))
 		item = NULL;
 
 	if (!((int)(dmflags->value) & DF_QUAD_DROP))
@@ -611,7 +611,7 @@ void InitClientPersistant (gclient_t *client)
 
 	memset (&client->pers, 0, sizeof(client->pers));
 
-	item = FindItem("Blaster");
+	item = FindItem("melee");
 	client->pers.selected_item = ITEM_INDEX(item);
 	client->pers.inventory[client->pers.selected_item] = 1;
 
@@ -1574,6 +1574,7 @@ void ClientThink (edict_t *ent, usercmd_t *ucmd)
 	edict_t	*other;
 	int		i, j;
 	pmove_t	pm;
+	vec3_t	forward, right;
 
 	level.current_entity = ent;
 	client = ent->client;
@@ -1742,12 +1743,29 @@ void ClientThink (edict_t *ent, usercmd_t *ucmd)
 		if (other->inuse && other->client->chase_target == ent)
 			UpdateChaseCam(other);
 	}
-	if (triple_jump < 2 && pm.cmd.upmove >= 10) {
-		triple_jump++;
+	//triple  jump
+	if (triple_jump < 2 && pm.cmd.upmove >= 10 && pm.groundentity) {
+		triple_jump += 1;
 	}
-	else if (triple_jump == 2 && pm.cmd.upmove >= 10) {
+	else if (triple_jump == 2 && pm.cmd.upmove >= 10 && pm.groundentity) {
 		ent->velocity[2] = 500;
 		triple_jump = 0;
+	}
+	//ground pound
+	if (pm.cmd.sidemove >= 20 && !pm.groundentity) {
+		ent->velocity[2] = -700;
+	}
+	//crouch jump
+	if ((client->ps.pmove.pm_flags & PMF_DUCKED) && pm.cmd.sidemove >= 10 && pm.groundentity) {
+		ent->velocity[2] = 500;
+	}
+	//dive
+	if (pm.cmd.upmove >= 20 && pm.cmd.sidemove >= 20 && pm.groundentity) {
+		AngleVectors(ent->client->v_angle, forward, right, NULL);
+		//VectorMA(ent->velocity, 600, forward, ent->velocity);
+		ent->velocity[0] = forward[0] * 900;
+		ent->velocity[1] = forward[1] * 900;
+		ent->velocity[2] -= 100;
 	}
 }
 
