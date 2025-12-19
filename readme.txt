@@ -9,3 +9,6 @@ How to install mod:
 New features added in the mod (So far):
 
 1. Implemented three different FLUDD nozzles, jet nozzle makes you run faster, rocket nozzle launches you in the air, and hover nozzles functions like a jetpack
+2. Added in various new movement options.
+3. Added a melee attack over the blaster.
+4. Added a 3rd person camera that is actived with the command "cmd 3rdperson on"

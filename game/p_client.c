@@ -1756,7 +1756,7 @@ void ClientThink (edict_t *ent, usercmd_t *ucmd)
 		ent->velocity[2] = -700;
 	}
 	//crouch jump
-	if ((client->ps.pmove.pm_flags & PMF_DUCKED) && pm.cmd.sidemove >= 10 && pm.groundentity) {
+	if ((client->ps.pmove.pm_flags & PMF_DUCKED) && client->thrust==1 && pm.groundentity) {
 		ent->velocity[2] = 500;
 	}
 	//dive
